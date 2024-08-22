@@ -1,0 +1,26 @@
+CREATE TABLE IF NOT exists Person (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    last_name VARCHAR(255)
+);
+
+-- INSERTAR DATOS EN LA TABLA
+INSERT INTO Person(name, last_name) VALUES ('John', 'Doe');
+INSERT INTO Person(name, last_name) VALUES ('Jane', 'Smith');
+INSERT INTO Person(name, last_name) VALUES ('Alice', 'Johnson');
+INSERT INTO Person(name, last_name) VALUES ('Bob', 'Williams');
+INSERT INTO Person(name, last_name) VALUES ('Charlie', 'Brown');
+
+-- Procedimiento almacenado para consultar
+DELIMITER $$
+CREATE PROCEDURE verPersonas()
+BEGIN
+	SELECT * FROM person;
+END$$;
+
+-- Procedimiento almacenado para consultar un solo registro
+DELIMITER $$
+CREATE PROCEDURE buscarPersona(IN person_id INT)
+BEGIN
+	SELECT * FROM person WHERE id = person_id;
+END$$;
